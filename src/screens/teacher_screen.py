@@ -19,6 +19,9 @@ import csv
 from collections import defaultdict
 
 from datetime import datetime
+from zoneinfo import ZoneInfo
+
+IST = ZoneInfo("Asia/Kolkata")
 
 import pandas as pd
 
@@ -280,7 +283,7 @@ def teacher_tab_attendance_records():
 
         data.append({
             "ts_group": ts_group,
-            "Time": datetime.fromisoformat(ts).strftime("%Y-%m-%d %I:%M %p") if ts else "N'A",
+            "Time": pd.to_datetime(ts, utc=True).tz_convert(IST).strftime("%Y-%m-%d %I:%M %p") if ts else "N/A",
             "Subject": r['subjects']['name'],
             "Subject Code": r['subjects']['subject_code'],
             "is_present": is_present,

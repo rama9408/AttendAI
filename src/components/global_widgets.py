@@ -307,7 +307,8 @@ def _ask_gemini(history, role, user):
     msg = str(last_error).lower()
     if "429" in msg or "quota" in msg or "rate" in msg:
         return "I'm getting too many requests right now (free-tier limit). Please try again in a minute."
-    return "Sorry, I couldn't reach the AI service. Please try again shortly."
+    print("GEMINI ERROR:", repr(last_error))   # shows in Streamlit Cloud logs
+    return f"Sorry, I couldn't reach the AI service.\n\n`DEBUG: {last_error}`"
 
 
 @st.dialog("AttendAI Assistant", width="large")

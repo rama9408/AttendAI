@@ -1,5 +1,5 @@
 import streamlit as st
-
+from src.components.global_widgets import render_global_widgets
 from src.ui.base_layout import style_background_dashboard, style_base_layout
 
 from src.components.header import header_dashboard
@@ -34,6 +34,7 @@ def teacher_screen():
 
     style_background_dashboard()
     style_base_layout(accent="#D97A55")   # muted terracotta on Teacher Login + Dashboard
+    render_global_widgets()
 
     if "teacher_data" in st.session_state:
         teacher_dashboard()

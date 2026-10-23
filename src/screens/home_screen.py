@@ -2,9 +2,11 @@ import streamlit as st
 from src.components.header import header_home
 from src.components.footer import footer_home
 from src.ui.base_layout import style_base_layout, style_background_home
+from src.components.global_widgets import render_global_widgets
 
 def home_screen():
 
+    render_global_widgets()
     header_home()
     style_background_home()
     style_base_layout(accent="#2FA88F")   # soft teal on Home

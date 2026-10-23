@@ -146,3 +146,16 @@ def get_subject_roster_with_logs(subject_id):
 
     return enrolled_students
 
+def get_teacher_students_index(teacher_id):
+    """
+    Lightweight (id + name only, no embeddings) list of every enrollment
+    under a teacher's subjects. Used by the global search bar.
+    """
+    response = (
+        supabase.table('subject_students')
+        .select("student_id, students(student_id, name), subjects!inner(subject_id, name, subject_code, section, teacher_id)")
+        .eq('subjects.teacher_id', teacher_id)
+        .execute()
+    )
+    return response.data
+

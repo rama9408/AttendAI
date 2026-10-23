@@ -1,5 +1,5 @@
 import streamlit as st
-
+from src.components.global_widgets import render_global_widgets
 from src.ui.base_layout import style_background_dashboard, style_base_layout
 
 from src.components.header import header_dashboard
@@ -152,6 +152,7 @@ def student_screen():
 
     style_background_dashboard()
     style_base_layout(accent="#2FA88F")   # soft teal on Student Login + Dashboard
+    render_global_widgets()
 
     if "student_data" in st.session_state:
         student_dashboard()

@@ -23,7 +23,7 @@ from src.database.db import (
 from src.pipelines.analytics import analyze_student_subject
 
 # Tried in order. Override the first one by adding GEMINI_MODEL to secrets.
-GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
+GEMINI_MODELS = ["gemini-3.5-flash-lite"]
 
 APP_GUIDE = """
 ABOUT ATTENDAI (use this to answer "how do I..." questions):
